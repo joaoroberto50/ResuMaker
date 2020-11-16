@@ -5,7 +5,6 @@ from string import punctuation
 from nltk.probability import FreqDist
 from collections import defaultdict
 from heapq import nlargest
-import sys
 
 
 def _get_tokenize(text):
@@ -35,12 +34,11 @@ def _get_resumer(u_sents, num, sent):
     return summary
 
 
-def resumer(argv):
-    text = _open_Document(argv [1])
+def resumer(text, n_sent):
     words, sents = _get_tokenize(text)
     stopw, nostopw = _get_stops(words)
     freq = FreqDist(nostopw)
     u_sents = _sentences(sents, freq)
-    summary = _get_resumer(u_sents, int(argv[2]), sents)
-    print(summary)
+    summary = _get_resumer(u_sents, int(n_sent), sents)
+    return summary
 
