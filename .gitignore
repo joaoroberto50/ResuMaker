@@ -4,3 +4,5 @@ __pycache__
 venv_doc
 *.pdf
 doc1.txt
+*.odt
+*.docx

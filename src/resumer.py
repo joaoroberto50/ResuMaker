@@ -7,23 +7,18 @@ from collections import defaultdict
 from heapq import nlargest
 import sys
 
-def open_Document(filename):
-    with open(filename, 'r') as fp:
-        text = fp.read()
-    return text
 
-
-def get_tokenize(text):
+def _get_tokenize(text):
     return word_tokenize(text), sent_tokenize(text)
 
 
-def get_stops(words):
+def _get_stops(words):
     stopw = set(stopwords.words('portuguese') + list(punctuation))
     no_stopw = [word for word in words if word not in stopw]
     return stopw, no_stopw
 
 
-def sentences(sent, freq):
+def _sentences(sent, freq):
     usable_sents = defaultdict(int)
     for i, sentence in enumerate(sent):
         for word in word_tokenize(sentence.lower()):
@@ -32,7 +27,7 @@ def sentences(sent, freq):
     return usable_sents
 
 
-def resumer(u_sents, num, sent):
+def _get_resumer(u_sents, num, sent):
     index_sents = nlargest(num, u_sents, u_sents.get)
     summary = ''
     for i in sorted(index_sents):
@@ -40,14 +35,12 @@ def resumer(u_sents, num, sent):
     return summary
 
 
-def main(argv):
-    text = open_Document(argv [1])
-    words, sents = get_tokenize(text)
-    stopw, nostopw = get_stops(words)
+def resumer(argv):
+    text = _open_Document(argv [1])
+    words, sents = _get_tokenize(text)
+    stopw, nostopw = _get_stops(words)
     freq = FreqDist(nostopw)
-    u_sents = sentences(sents, freq)
-    summary = resumer(u_sents, int(argv[2]), sents)
+    u_sents = _sentences(sents, freq)
+    summary = _get_resumer(u_sents, int(argv[2]), sents)
     print(summary)
 
-if __name__ == '__main__':
-    main(sys.argv)
