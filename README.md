@@ -19,7 +19,7 @@ Now ready to use
 ```
 python main [options] <filename> numm <outfile>
 ```
-\[options] - type of file you will open
+[options] - type of file you will open
 
 <filename> - name of file to do a summary
   
