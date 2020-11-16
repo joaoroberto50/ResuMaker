@@ -19,13 +19,13 @@ Now ready to use
 ```
 python main [options] <filename> numm <outfile>
 ```
-[options] - type of file you will open
+[options]    - type of file you will open
 
-<filename> - name of file to do a summary
+'<filename>' - name of file to do a summary
   
-numm       - number of sentences you want in the summary
+numm         - number of sentences you want in the summary
 
-<outfile>  - name of a txt file to save the generated summary
+'<outfile>'  - name of a txt file to save the generated summary
   
 Use the Help guide
 ```
