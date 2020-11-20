@@ -33,7 +33,7 @@ def option(text, numm, outf):
 
 
 def interactive():
-    pass
+    return f'Not implemented yet!'
 
 
 def main(argv):
@@ -47,7 +47,7 @@ def main(argv):
         text = open_Text(argv[2])
         option(text, argv[3], argv[4])
     elif len(argv) == 2 and argv[1] == '-i':
-        interactive()
+        print(interactive())
     else:
         print(help())
 
